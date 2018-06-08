@@ -72,9 +72,11 @@ def resolve(url):
 	if(long_url):
 		long_url=long_url.replace('"','')
 		if ("http://" not in long_url):
-			long_url="http://"+long_url
-		elif ("https://" not in long_url):
-			long_url="https://"+long_url
+			if ("https://" not in long_url):
+				long_url="http://"+long_url
+			# else:
+			# 	long_url="http://"+long_url
+
 		print(long_url)
 		return redirect(long_url)
 	else:
