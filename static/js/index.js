@@ -124,6 +124,7 @@ $(document).ready(function(){
       data: JSON.stringify(obj),
       success:function(data) {
         var shurl='/'+data.surl;
+        
         $('#status').modal('show');
         $('#ourl').html(data.url);
         $('#ourl').attr('href',data.url);
