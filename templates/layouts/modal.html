@@ -1,0 +1,128 @@
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">
+        {% block title %}Choose Type Of URL{% endblock %}
+        </h4>
+      </div>
+      
+      <div class="modal-body">
+        {% block body %}
+        
+        <div class="row">
+          <div class="tab col-md-12 text-center">
+            <a data-toggle="pill" href="#default" class="btn btn-default btn-lg" onclick="prop(this)">Default</a>
+            <a data-toggle="pill" href="#custom" class="btn btn-danger btn-lg" onclick="prop(this)">Custom</a>
+            <a data-toggle="pill" href="#semantic" class="btn btn-primary btn-lg" onclick="prop(this)">Fake Word</a>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="tab-content col-md-10 col-md-offset-1" style="color: black">
+            <div  id="default" class="tab-pane fade in active">
+              <h3>Default</h3>
+              <p>
+                A string of random characters after the URL of this site.
+                Very useful as it compresses huge, ugly URLs.<br>
+                From: 
+                <pre>https://storytimewithjohn.com/2014/11/06/waffling-on-belgium/</pre> 
+                To:
+                <pre>https://keeplink.in/2Bp</pre>
+                <br>
+              </p>
+            </div>
+            
+            <div id="custom" class="tab-pane fade">
+              <h3>Custom</h3>
+              <p>You have the option to use a custom text in the shortened link. This is very useful to remember the content of the site to which it links.</p>
+              From :
+              <pre>https://storytimewithjohn.com/2014/11/06/waffling-on-belgium/</pre>
+              To:
+              <pre>https://keeplink.in/waffling-belgium</pre>
+              Test if custom link is available:
+              <span id="available" class="text notif center" style="font-size: 1.2em;color: green"> Available!</span>
+              <span id="unavailable" class="text notif center" style="font-size: 1.2em;color: red">Sorry, already used ! </span>
+              <span id="empty" class="text notif center" style="font-size: 1.2em;color: red">Append your custom url !</span>
+              <span id="format" class="text notif center" style="font-size: 1.2em;color: red">Only Numbers, Letters and Hypen allowed !</span>
+
+
+              <div class="input-group">
+                <input type="text" class="form-control" id="custom_url" placeholder="Search">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" id="checkcustom">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+
+              </div>
+
+
+            </div>
+            
+            <div id="semantic" class="tab-pane fade">
+              <h3>Fake Word</h3>
+              <p>With auto-generated nonsensical yet pronounceable word(s) in the link, as compared to random characters.<br>
+                From:
+                <pre>https://storytimewithjohn.com/2014/11/06/waffling-on-belgium/</pre>
+                To:
+                <pre>https://keeplink.in/Uzis</pre>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <br>
+        
+        <div class="row text-center">
+          <button  id="submitrequest" class="btn btn-success btn-lg">Generate Link!</button>
+        </div>
+        
+        {% endblock %}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+     
+
+<!-- Modal -->
+<div id="status" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Success!</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1" style="color: black">
+              <h3 class="text-center">Congrats! Your short link is generated..</h3>
+              <br>
+              <p>Original URL:</p>
+                <pre><a href="" id="ourl" >Lorem ipsum dolor sit amet, consectetur.</a></pre>
+
+              <p>Shortened URL:</p>
+                <pre><a href="" id="surl">Lorem ipsum dolor sit amet, consectetur.</a></pre>
+
+          </div>
+        </div>
+     </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

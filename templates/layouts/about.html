@@ -1,0 +1,49 @@
+{% block about %}
+<!-- Container (About Section) -->
+<div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 ">
+      <h2 style="text-align: center;">A feature rich and fast URL shortener</h2>
+      <br>
+      <blockquote>Keeplink.in provides you with a fast, opensource, and feature rich URL Shortening service, which is completely free!</blockquote>
+      
+      <br>
+      <h3>Why the name?</h3>
+      <p>The site name <a href="https://keeplink.in">keeplink.in</a> chosen to be semantic so it is easy to remember. Also it registers as the phrase "Keep Linking", something we will help you with gladly. :) </p>
+      <br>
+      <h3 id="features">Why to use this over other similar sites?</h3>
+      <br>
+      <h4>1. Free to use, built for the community</h4>
+      <p>Because we provide many interesting features which are completely free (as both in cost of use and <a href="http://wiki.c2.com/?FreeAsInBeer" target="_blank">Free as in Beer</a>"). </p>
+      <p>The source code is available for use by anyone under the <a href="https://openlicensesapi.herokuapp.com/6/html">MIT Licence</a>. The purpose of this project is to help the community and any <a href="" target="_blank">suggestions</a> for improvements or features are welcome.</p>
+      
+      <br>
+      <h4>2. Many Useful Features</h4>
+      <p> URLs be shortened to get a small string of random characters or can be customised , based on availability.
+      <p>
+      Also there are features which aren't available on other platforms, for example, usually short URLs have random characters and are difficult to remember, hence custom URLs are used, which is provided for free on this site (based on availability),but sometimes you want the URL to be random yet it should be easy to remember. There is a feature to address this exact problem:</p>
+      <p><span style="font-weight: bold">"Fake Words"</span>: These are randomly generated words which make no sense , but can be easily pronounced hence remembered.</p>
+      
+      <br>
+      <h4 id="api">3. API </h4>
+      <p>There is also a public <a href="" target="_blank">API</a> at your disposal to access the important features on this site.
+      <p>As of this time, only the default mode is available with the API, where a short random string of characters is returned.</p>
+      <p>Request format:</p>
+      <pre>GET https://keeplink.in/shorten?url={param}</pre>
+      <p>Where <b>{param}</b> should be replaced by URl to be shortened.<br></p>
+      <p>Response format(example):</p>
+      <pre>https://keeplink.in/2Bu</pre>
+      <br>
+      <h3 id="features">Aknowlegdements</h3>
+      <p>This project is based on Open Source technologies and I want to thank the following individials/organisations:<br>
+      <ul>
+        <li>Armin Ronacher: Developer of <a href="http://flask.pocoo.org/" target="_blank">Flask</a>, a  python micro web framework.</li>
+        <li>Salvatore Sanfilippo: Developer of  <a href="https://redis.io/" target="_blank">Redis</a>, an in-memory, high speed, NoSQL database.</li>
+        <li>Mark Otto and Jacob Thornton: Developer of  <a href="https://redis.io/" target="_blank">Bootsrap</a>, a front-end CSS framework.</li>
+        <li>Rohit Datta: Developer of  <a href=https://formspree.io/" target="_blank">Formspree</a>, a zero config email-as-service.</li>
+        
+      <ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
