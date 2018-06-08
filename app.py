@@ -61,7 +61,7 @@ def shorten():
 		short_url=shortener.default(url)
 		print(short_url)
 		# response='Short URL: https://keeplink.in/'+short_url 
-		response='https://keeplink.in/'+short_url 
+		response='https://keeplink.in/'+short_url
 		return response
 
 
@@ -70,10 +70,15 @@ def shorten():
 def resolve(url):
 	long_url=shortener.decode(url)
 	if(long_url):
-		return redirect(long_url.replace('"',""))
+		long_url=long_url.replace('"','')
+		if ("http://" not in long_url):
+			long_url="http://"+long_url
+		elif ("https://" not in long_url):
+			long_url="https://"+long_url
+		print(long_url)
+		return redirect(long_url)
 	else:
 		return "Wrong Link!"
-
 
 if __name__ == '__main__':
 	app.jinja_env.auto_reload = True
