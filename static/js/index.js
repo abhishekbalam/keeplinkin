@@ -30,7 +30,6 @@ function prop(obj) {
 $(document).ready(function(){
   $('#error').css("display","none")
   $('#modalbtn').prop('disabled',true);
-  // $('#modalbtn').preventDefault();
   
   $('#long_url').val("");
 
