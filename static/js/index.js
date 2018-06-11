@@ -30,6 +30,8 @@ function prop(obj) {
 $(document).ready(function(){
   $('#error').css("display","none")
   $('#modalbtn').prop('disabled',true);
+  // $('#modalbtn').preventDefault();
+  
   $('#long_url').val("");
 
   $('.notif').hide();
@@ -97,7 +99,7 @@ $(document).ready(function(){
     }});
   });
 
-  $('#submitrequest').click(function(){
+  $('#submitrequest').click(function(e){
     // result = url.replace(/(^\w+:|^)\/\//, '');
     var c_url=""
     var l_url=$('#long_url').val();
