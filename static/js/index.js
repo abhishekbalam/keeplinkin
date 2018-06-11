@@ -35,7 +35,7 @@ $(document).ready(function(){
 
   $('.notif').hide();
   $('#custom_url').val('https://keeplink.in/');
-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+  $(".navbar a, footer a[href='#home']").on('click', function(event) {
     if (this.hash !== "") {
       event.preventDefault();
       var hash = this.hash;
