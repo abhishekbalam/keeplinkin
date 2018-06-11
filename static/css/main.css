@@ -210,3 +210,11 @@ blockquote{
   font-size: 1.5em;
   border-left: 3px solid #000;
 }
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
