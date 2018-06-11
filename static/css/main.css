@@ -191,7 +191,7 @@ z-index: 10000;
 @media screen and (max-width: 480px) {
 .jumbotron{
   margin: auto 0;
-  height: 100vh;
+  min-height: 100vh;
 }
 h3{ 
 font-size:1.7em; 
