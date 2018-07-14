@@ -2,9 +2,11 @@ import os
 from flask import Flask, render_template, request, redirect, jsonify
 import shortener
 import redis
-
+from scout_apm.flask import ScoutApm
 
 app = Flask(__name__)
+
+ScoutApm(app)
 
 # db=redis.from_url(os.environ['REDISCLOUD_URL'])
 db=redis.from_url('redis://rediscloud:knJIvxJ0zwckXkNTogSsXQKNZ2k9QrvK@redis-11031.c52.us-east-1-4.ec2.cloud.redislabs.com:11031')
@@ -85,4 +87,5 @@ def resolve(url):
 if __name__ == '__main__':
 	app.jinja_env.auto_reload = True
 	app.config['TEMPLATES_AUTO_RELOAD'] = True
+	app.config['SCOUT_NAME']    = "Keeplinkin"
 	app.run(debug=True)
