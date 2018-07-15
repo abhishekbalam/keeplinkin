@@ -1,3 +1,4 @@
+import os
 import redis
 import b62
 import funnywords as fw
