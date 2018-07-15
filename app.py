@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 ScoutApm(app)
 
-# db=redis.from_url(os.environ['REDISCLOUD_URL'])
-db=redis.Redis(host='localhost', port=6379, password='')
+db=redis.from_url(os.environ['REDISCLOUD_URL'])
+# db=redis.Redis(host='localhost', port=6379, password='')
 
 @app.route('/')	
 def main():
