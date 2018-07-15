@@ -6,11 +6,11 @@ import funnywords as fw
 # redis-cli -h redis-18904.c16.us-east-1-2.ec2.cloud.redislabs.com -p 18904 -a WGUPyxmAPpyP3pq3A9YWyLyEcU2Tsyus
 
 # For Remote DB
-# db=redis.from_url(os.environ['REDISCLOUD_URL'])
+db=redis.from_url(os.environ['REDISCLOUD_URL'])
 
 # For Local DB
 # db=redis.Redis(host='localhost', port=6379, password='')
-db=redis.from_url('redis://rediscloud:knJIvxJ0zwckXkNTogSsXQKNZ2k9QrvK@redis-11031.c52.us-east-1-4.ec2.cloud.redislabs.com:11031')
+# db=redis.from_url('redis://rediscloud:knJIvxJ0zwckXkNTogSsXQKNZ2k9QrvK@redis-11031.c52.us-east-1-4.ec2.cloud.redislabs.com:11031')
 
 
 def default(l_url):
