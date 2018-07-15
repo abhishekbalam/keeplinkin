@@ -1,4 +1,49 @@
 
+function stoppedTyping(obj) {
+  if(obj.value.length > 0) {
+    console.log(obj.value.indexOf("keeplink.in"));
+    
+    if(obj.value.indexOf("keeplink.in")>=0){
+      $('#error').css("display","block")
+      $('#modalbtn').prop('disabled',true);
+    }
+    else{
+      $('#modalbtn').prop('disabled',false);
+    }
+  }
+  else{
+    $('#error').css("display","none")
+    $('#modalbtn').prop('disabled',true);
+  }
+} 
+
+function prop(obj) {
+  console.log(obj.innerHTML);
+  if(obj.innerHTML=="Custom"){
+  console.log("herree")
+   $('#submitrequest').prop('disabled',true);
+  }
+  else{
+   $('#submitrequest').prop('disabled',false);
+  }
+}
+
+function CopyToClipboard(containerid) {
+  if (document.selection) { 
+      var range = document.body.createTextRange();
+      range.moveToElementText(document.getElementById(containerid));
+      range.select().createTextRange();
+      document.execCommand("copy"); 
+  }
+  else if (window.getSelection) {
+      var range = document.createRange();
+       range.selectNode(document.getElementById(containerid));
+       window.getSelection().addRange(range);
+       document.execCommand("copy");
+       alert("Link Copied!") 
+  }
+}
+
 $(document).ready(function(){
   $('#error').css("display","none")
   $('#modalbtn').prop('disabled',true);
