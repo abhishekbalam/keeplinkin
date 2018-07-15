@@ -41,7 +41,7 @@ function CopyToClipboard(containerid) {
        window.getSelection().addRange(range);
        document.execCommand("copy");
        alert("Link Copied!") 
-  }
+    }
 }
 
 $(document).ready(function(){
