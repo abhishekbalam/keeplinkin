@@ -4,7 +4,7 @@ function stoppedTyping(obj) {
     console.log(obj.value.indexOf("keeplink.in"));
     
     if(obj.value.indexOf("keeplink.in")>=0){
-      $('#error').css("display","block")
+      $('#error2').css("display","block")
       $('#modalbtn').prop('disabled',true);
     }
     else{
@@ -45,10 +45,28 @@ function CopyToClipboard(containerid) {
 }
 
 $(document).ready(function(){
-  $('#error').css("display","none")
-  $('#modalbtn').prop('disabled',true);
+  $('#error1').css("display","none")
+  $('#error2').css("display","none")
+  // $('#modalbtn').prop('disabled',true);
   
   $('#long_url').val("");
+
+  function CopyToClipboard(containerid) {
+    if (document.selection) { 
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select().createTextRange();
+        document.execCommand("copy"); 
+    }
+    else if (window.getSelection) {
+        var range = document.createRange();
+         range.selectNode(document.getElementById(containerid));
+         window.getSelection().addRange(range);
+         document.execCommand("copy");
+         alert("Link Copied!") 
+    }
+  }
+
 
   $('.notif').hide();
   $('#custom_url').val('https://keeplink.in/');
@@ -64,8 +82,6 @@ $(document).ready(function(){
     }
   });
   
-
-
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
@@ -75,6 +91,24 @@ $(document).ready(function(){
           $(this).addClass("slide");
         }
     });
+  });
+
+  $('#modalbtn').click(function () {
+    $('#error1').css("display","none")
+    $('#error2').css("display","none")
+  
+    var val=$('#long_url').val();
+    if(val.indexOf("keeplink.in")>=0){
+      $('#error2').css("display","block")
+      return;
+    }
+    else if(val.replace(/^\s+/g, '').length==0){
+       $('#error1').css("display","block")
+      return;
+    }
+    else{
+      $('#myModal').modal();
+    }
   });
 
   function isValid(str) { return /^[0-9A-Za-z\s\-]+$/.test(str); }

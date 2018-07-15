@@ -7,10 +7,10 @@ import funnywords as fw
 # redis-cli -h redis-18904.c16.us-east-1-2.ec2.cloud.redislabs.com -p 18904 -a WGUPyxmAPpyP3pq3A9YWyLyEcU2Tsyus
 
 # For Remote DB
-db=redis.from_url(os.environ['REDISCLOUD_URL'])
+# db=redis.from_url(os.environ['REDISCLOUD_URL'])
 
 # For Local DB
-# db=redis.Redis(host='localhost', port=6379, password='')
+db=redis.Redis(host='localhost', port=6379, password='')
 
 def default(l_url):
 	score=(db.zcard("default")+1)
