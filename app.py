@@ -59,13 +59,14 @@ def shorten():
 
 	else:
 		url=request.args.get("url")
+		url=url.replace('"', '')
+		url='"'+url+'"'
+		
 		short_url=shortener.default(url)
 		print(short_url)
 		# response='Short URL: https://keeplink.in/'+short_url 
 		response='https://keeplink.in/'+short_url
 		return response
-
-
 
 @app.route('/<url>')	
 def resolve(url):
