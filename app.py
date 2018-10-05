@@ -13,8 +13,7 @@ db=redis.from_url(os.environ['REDISCLOUD_URL'])
 
 @app.route('/')	
 def main():
-	return "Hello Shivam."
-	#return render_template('index.html')
+	return render_template('index.html')
 
 @app.route('/checkcustom/<url>')
 def checkcustom(url):
