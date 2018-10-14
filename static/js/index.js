@@ -41,10 +41,10 @@ function CopyToClipboard(containerid) {
     var successful = document.execCommand('copy');  
     var msg = successful ? 'successful' : 'unsuccessful';  
     console.log('Copy link was ' + msg);
-    alert('Copied!');
+    alert('Link Copied!');
   } catch(err) {  
     console.log('Oops, unable to copy'); 
-    alert('Unable to copy!<br>Please copy manually...')
+    alert('Unable to copy! Please copy manually...')
   }  
 
   // Remove the selections - NOTE: Should use
