@@ -29,21 +29,43 @@ function prop(obj) {
 }
 
 function CopyToClipboard(containerid) {
-  if (document.selection) { 
-      var range = document.body.createTextRange();
-      range.moveToElementText(document.getElementById(containerid));
-      range.select().createTextRange();
-      document.execCommand("copy");
-  }
-  else if (window.getSelection) {
-      var range = document.createRange();
-       range.selectNode(document.getElementById(containerid));
-       window.getSelection().addRange(range);
-       document.execCommand("copy");
-       alert("Link Copied!") 
-    }
+  var range = document.createRange();  
+  var selector=document.getElementById(containerid);
 
-  
+  range.selectNode(selector);
+  window.getSelection().addRange(range);  
+
+
+  try {  
+    // Now that we've selected the anchor text, execute the copy command  
+    var successful = document.execCommand('copy');  
+    var msg = successful ? 'successful' : 'unsuccessful';  
+    console.log('Copy link was ' + msg);
+    alert('Copied!');
+  } catch(err) {  
+    console.log('Oops, unable to copy'); 
+    alert('Unable to copy!<br>Please copy manually...')
+  }  
+
+  // Remove the selections - NOTE: Should use
+  // removeRange(range) when it is supported  
+  window.getSelection().removeAllRanges();  
+
+  // if (document.selection) { 
+  //     var range = document.body.createTextRange();
+  //     range.moveToElementText(document.getElementById(containerid));
+  //     range.select().createTextRange();
+  //     document.execCommand("copy");
+  // }
+  // else if (window.getSelection) {
+  //     var range = document.createRange();
+  //      range.selectNode(document.getElementById(containerid));
+  //      window.getSelection().addRange(range);
+  //      document.execCommand("copy");
+  //      alert("Link Copied!") 
+  //   }
+
+
 }
 
 $(document).ready(function(){
