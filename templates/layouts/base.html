@@ -55,7 +55,27 @@
   <p>Maintained by <a href="https://github.com/abhishekbalam">Abhishek Balam</a></p>
 </footer>
 {% endblock %}
+<script type="text/javascript">
+  function CopyToClipboard1(containerid) {
+  var range = document.createRange();  
+  var selector=document.getElementById(containerid);
 
+  range.selectNode(selector);
+  window.getSelection().addRange(range);  
+
+
+  try {  
+    var successful = document.execCommand('copy');  
+    var msg = successful ? 'successful' : 'unsuccessful';  
+    console.log('Copy link was ' + msg);
+    alert('Copied!');
+  } catch(err) {  
+    console.log('Oops, unable to copy'); 
+    alert('Unable to copy!<br>Please copy manually...')
+  }  
+  window.getSelection().removeAllRanges();  
+}
+</script>
 <script type="text/javascript" src="{{ url_for('static',filename='js/index.js')}}"></script>
 
 </body>
