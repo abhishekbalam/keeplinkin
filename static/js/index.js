@@ -33,7 +33,7 @@ function CopyToClipboard(containerid) {
       var range = document.body.createTextRange();
       range.moveToElementText(document.getElementById(containerid));
       range.select().createTextRange();
-      document.execCommand("copy"); 
+      document.execCommand("copy");
   }
   else if (window.getSelection) {
       var range = document.createRange();
@@ -42,6 +42,8 @@ function CopyToClipboard(containerid) {
        document.execCommand("copy");
        alert("Link Copied!") 
     }
+
+  
 }
 
 $(document).ready(function(){
