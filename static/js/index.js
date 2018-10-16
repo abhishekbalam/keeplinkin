@@ -92,6 +92,8 @@ function CopyToClipboard(containerid) {
 $(document).ready(function(){
   $('#error1').css("display","none")
   $('#error2').css("display","none")
+  $('#error3').css("display","none")
+  
   // $('#modalbtn').prop('disabled',true);
   
   $('#long_url').val("");
@@ -147,8 +149,12 @@ $(document).ready(function(){
       $('#error2').css("display","block")
       return;
     }
+    else if(validURL(val)){
+      $('#error3').css("display","block")
+      return;
+    }
     else if(val.replace(/^\s+/g, '').length==0){
-       $('#error1').css("display","block")
+      $('#error1').css("display","block")
       return;
     }
     else{
