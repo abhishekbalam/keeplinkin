@@ -2,7 +2,6 @@
 function validURL(str) {
   var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
   if(!regex .test(str)) {
-    alert("Please enter valid URL.");
     return false;
   } else {
     return true;
@@ -85,9 +84,9 @@ function CopyToClipboard(containerid) {
 }
 
 $(document).ready(function(){
-  $('#error1').css("display","none")
-  $('#error2').css("display","none")
-  $('#error3').css("display","none")
+  $('#error1').css("display","none");
+  $('#error2').css("display","none");
+  $('#error3').css("display","none");
   
   // $('#modalbtn').prop('disabled',true);
   
@@ -136,15 +135,16 @@ $(document).ready(function(){
   });
 
   $('#modalbtn').click(function () {
-    $('#error1').css("display","none")
-    $('#error2').css("display","none")
-  
+    $('#error1').css("display","none");
+    $('#error2').css("display","none");
+    $('#error3').css("display","none");
+    
     var val=$('#long_url').val();
     if(val.indexOf("keeplink.in")>=0){
       $('#error2').css("display","block")
       return;
     }
-    else if(validURL(val)){
+    else if(!validURL(val)){
       $('#error3').css("display","block")
       return;
     }
