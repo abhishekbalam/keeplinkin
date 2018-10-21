@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, jsonify
 import shortener
 import redis
 from scout_apm.flask import ScoutApm
+import validator
 
 app = Flask(__name__)
 
@@ -60,9 +61,11 @@ def shorten():
 	else:
 		url=request.args.get("url")
 		url=url.replace('"', '')
+		valid=validators.url(url);
+		if(valid!=True):
+			return "Invalid URL!"
 		short_url=shortener.default(url)
 		print(short_url)
-		# response='Short URL: https://keeplink.in/'+short_url 
 		response='https://keeplink.in/'+short_url
 		return response
 
@@ -74,9 +77,6 @@ def resolve(url):
 		if ("http://" not in long_url):
 			if ("https://" not in long_url):
 				long_url="http://"+long_url
-			# else:
-			# 	long_url="http://"+long_url
-
 		print(long_url)
 		return redirect(long_url)
 	else:
