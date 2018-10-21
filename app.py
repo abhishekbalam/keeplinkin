@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, jsonify
 import shortener
 import redis
 from scout_apm.flask import ScoutApm
-import validator
+import validators
 
 app = Flask(__name__)
 
