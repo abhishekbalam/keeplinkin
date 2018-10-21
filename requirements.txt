@@ -2,6 +2,7 @@ blinker==1.4
 certifi==2018.4.16
 chardet==3.0.4
 click==6.7
+decorator==4.3.0
 Flask==1.0.2
 gunicorn==19.8.1
 idna==2.7
@@ -13,5 +14,7 @@ PyYAML==3.13
 redis==2.10.6
 requests==2.19.1
 scout-apm==1.1.8
+six==1.11.0
 urllib3==1.23
+validators==0.12.2
 Werkzeug==0.14.1
