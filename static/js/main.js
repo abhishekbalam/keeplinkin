@@ -87,6 +87,8 @@ $(document).ready(function(){
   $('#error1').css("display","none");
   $('#error2').css("display","none");
   $('#error3').css("display","none");
+  // var input = document.getElementById("long_url").focus();
+  $('#long_url').focus();
   
   // $('#modalbtn').prop('disabled',true);
   
