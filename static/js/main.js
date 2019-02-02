@@ -142,7 +142,7 @@ $(document).ready(function(){
     $('#error3').css("display","none");
     
     var val=$('#long_url').val();
-    if(val.indexOf("keeplink.in")>=0){
+    if(val.indexOf("://keeplink.in")>=0){
       $('#error2').css("display","block")
       return;
     }
