@@ -1,5 +1,5 @@
 
-BASE62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+BASE62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 def encode(num, alphabet=BASE62):
 	"""Encode a positive number in Base X
@@ -47,4 +47,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-

@@ -4,6 +4,7 @@ import shortener
 import redis
 from scout_apm.flask import ScoutApm
 import validators
+import redisdl
 
 app = Flask(__name__)
 
@@ -26,18 +27,14 @@ def checkcustom(url):
 		return "0"
 
 
-
 @app.route('/shorten/', methods=['POST','GET'])
 def shorten():
-
 	if request.method == 'POST':
 		data=request.json
 		url=data['url']
 		type=data['type']
 		surl=data['surl']
-
 		short_url = "YoYoMaMa"
-
 		if(type=="default"):
 			short_url=shortener.default(url)
 		elif(type=="custom"):
@@ -49,7 +46,6 @@ def shorten():
 			short_url=shortener.semantic(url)
 		else:
 			return "Wrong Type"
-
 		# short_url = 'shortened url: %s \n ' % short_url
 		# long_url = 'Orginal url: %s \n' % url
 		print(url+ '<br>' + short_url);
@@ -57,7 +53,6 @@ def shorten():
 			url=url,
 			surl=short_url
 		)
-
 	else:
 		url=request.args.get("url")
 		url=url.replace('"', '')
@@ -81,6 +76,12 @@ def resolve(url):
 		return redirect(long_url)
 	else:
 		return "Wrong Link!"
+
+@app.route('/export')	
+def export():
+	json_text = redisdl.dumps(pretty=True)
+	return json_text
+
 
 if __name__ == '__main__':
 	app.jinja_env.auto_reload = True
