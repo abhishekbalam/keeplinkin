@@ -1,3 +1,5 @@
+backup.py
+dump.json
 venv
 *.pyc
 __pycache__

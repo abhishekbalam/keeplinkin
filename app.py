@@ -77,12 +77,6 @@ def resolve(url):
 	else:
 		return "Wrong Link!"
 
-@app.route('/export')	
-def export():
-	json_text = redisdl.dumps(pretty=True)
-	return json_text
-
-
 if __name__ == '__main__':
 	app.jinja_env.auto_reload = True
 	app.config['TEMPLATES_AUTO_RELOAD'] = True
