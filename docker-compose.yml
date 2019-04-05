@@ -1,0 +1,34 @@
+version: "3"
+
+networks:
+  keeplinkin:
+    external: false
+
+services:
+  app:
+    build: .
+    environment:
+      - FLASK_APP=keeplinkin
+      - FLASK_ENV=dev
+      - SECRET_KEY=dev
+      - ENV PYTHONPATH=/home/app
+      - ENV REDIS_HOST=redis
+      - SITE_URL=http://localhost:5000
+    volumes:
+      - .:/home/app
+    ports:
+      - "5000:8000"
+    depends_on:
+      - redis
+    networks:
+      - keeplinkin
+  redis:
+    image: "redis:latest"
+    volumes:
+      - "./redis/conf:/usr/local/etc/redis/"
+      - "./redis/data:/data"
+    command:
+      - /usr/local/etc/redis/redis.conf
+    networks:
+      - keeplinkin
+    tty: true

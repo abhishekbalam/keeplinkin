@@ -1,3 +1,22 @@
+$('#long_url').keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    $('#modalbtn').click();
+    return false;  
+  }
+});   
+
+
+$('#custom_url').keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    $('#checkcustom').click();
+    return false;  
+  }
+});   
+
 
 function validURL(str) {
   var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
@@ -35,8 +54,9 @@ function stoppedTyping(obj) {
 function prop(obj) {
   console.log(obj.innerHTML);
   if(obj.innerHTML=="Custom"){
-  console.log("herree")
-   $('#submitrequest').prop('disabled',true);
+    $('#custom_url').focus();
+    console.log("Custom");
+    $('#submitrequest').prop('disabled',true);
   }
   else{
    $('#submitrequest').prop('disabled',false);
@@ -61,26 +81,7 @@ function CopyToClipboard(containerid) {
     console.log('Oops, unable to copy'); 
     alert('Unable to copy! Please copy manually...')
   }  
-
-  // Remove the selections - NOTE: Should use
-  // removeRange(range) when it is supported  
   window.getSelection().removeAllRanges();  
-
-  // if (document.selection) { 
-  //     var range = document.body.createTextRange();
-  //     range.moveToElementText(document.getElementById(containerid));
-  //     range.select().createTextRange();
-  //     document.execCommand("copy");
-  // }
-  // else if (window.getSelection) {
-  //     var range = document.createRange();
-  //      range.selectNode(document.getElementById(containerid));
-  //      window.getSelection().addRange(range);
-  //      document.execCommand("copy");
-  //      alert("Link Copied!") 
-  //   }
-
-
 }
 
 $(document).ready(function(){
@@ -109,7 +110,6 @@ $(document).ready(function(){
          alert("Link Copied!") 
     }
   }
-
 
   $('.notif').hide();
   $('#custom_url').val('https://keeplink.in/');
@@ -185,7 +185,9 @@ $(document).ready(function(){
     c_url="/checkcustom/"+c_url
     console.log(c_url)
     
-    $.ajax({url: c_url, success: function(result){
+    $.ajax({
+      url: c_url,
+      success:function(result){
         console.log(result)
         if(result=="0"){
           $('#available').show();
@@ -194,7 +196,11 @@ $(document).ready(function(){
         else{
           $('#unavailable').show();
         }
-    }});
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert(errorThrown);
+      }
+      });
   });
 
   $('#submitrequest').click(function(e){
@@ -209,7 +215,6 @@ $(document).ready(function(){
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       type =  $(e.target).attr('id');
     });
-      
     
     console.log("Url:"+l_url+"\nType:"+type+"\nCustom Url:"+ c_url);
     
@@ -223,14 +228,16 @@ $(document).ready(function(){
       url: '/shorten/',
       data: JSON.stringify(obj),
       success:function(data) {
-        var shurl='/'+data.surl;
-        
+        console.log(data);
         $('#status').modal('show');
         $('#ourl').html(data.url);
         $('#ourl').attr('href',data.url);
-        $('#surl').html('https://keeplink.in'+shurl);
-        $('#surl').attr('href',shurl);
+        $('#surl').html(data.surl);
+        $('#surl').attr('href',data.surl);
         $('#long_url').val("");
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert(errorThrown);
       },
       dataType: 'json',
       contentType: "application/json"
