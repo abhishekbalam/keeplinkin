@@ -17,4 +17,4 @@ scout-apm==1.1.8
 six==1.11.0
 urllib3==1.23
 validators==0.12.2
-Werkzeug==0.14.1
+Werkzeug==0.15.3
