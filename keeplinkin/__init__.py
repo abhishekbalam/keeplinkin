@@ -23,6 +23,7 @@ def checkcustom(url):
 
 @app.route('/shorten/', methods=['POST','GET'])
 def shorten():
+	url=''
 	if request.method == 'POST':
 		data=request.json
 		url=data['url']
@@ -47,7 +48,10 @@ def shorten():
 			surl=short_url
 		)
 	else:
-		url=request.args.get("url")
+		try:
+			url=request.args.get("url")
+		except:
+			return "Record not found", 400
 		url=url.replace('"', '')
 		valid=validators.url(url);
 		if(valid!=True):
