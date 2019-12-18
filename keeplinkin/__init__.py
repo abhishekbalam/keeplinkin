@@ -52,7 +52,7 @@ def shorten():
 		valid=validators.url(url);
 		if(valid!=True):
 			return "Invalid URL!"
-		short_url=shortener.default(url)
+		short_url='/'+shortener.default(url)
 		print(short_url)
 		# response='https://keeplink.in/'+short_url
 		response=os.environ['SITE_URL']+short_url
